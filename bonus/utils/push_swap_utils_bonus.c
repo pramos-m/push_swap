@@ -1,0 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils_bonus.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pramos-m <pramos-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/06 14:29:18 by pramos-m          #+#    #+#             */
+/*   Updated: 2023/01/17 17:40:25 by pramos-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+int	ft_while_is_digit(char *num)
+{
+	int	i;
+
+	i = 0;
+	if ((num[0] == '-' || num[0] == '+') && num[1])
+		i++;
+	while (num[i])
+	{
+		if (!ft_isdigit(num[i]))
+			return (0);
+			i++;
+	}
+	return (1);
+}
+
+int	ft_check_maxint(t_ll nbr)
+{
+	if (nbr > INT_MAX || nbr < INT_MIN)
+		return (0);
+	return (1);
+}
+
+int	ft_issorted(t_stack *a)
+{
+	t_elems	*tmp;
+
+	if (!a->first)
+		return (0);
+	tmp = a->first;
+	while (tmp->next)
+	{
+		if (tmp->val > tmp->next->val)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
